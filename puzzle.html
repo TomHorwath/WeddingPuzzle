@@ -10,7 +10,7 @@
     <div class="container">
         <h2 id="puzzle-title"></h2>
         <img id="puzzle-image" src="" alt="Puzzle Clue" class="puzzle-image">
-        <p>Enter your answer below. If correct, you'll be notified!</p>
+       <!-- <p>Enter your answer below. If correct, you'll be notified.</p> -->
 
         <input type="text" id="answer-input" class="input-box" placeholder="Your answer">
         <button onclick="checkAnswer()" class="submit-button">Check Answer</button>
@@ -27,7 +27,7 @@
         const puzzle = puzzles.find(p => p.id === puzzleId);
 
         if (puzzle) {
-            document.getElementById("puzzle-title").innerText = puzzle.title;
+            document.getElementById("puzzle-title").innerText = `#${puzzle.id}: ${puzzle.title}`;
             document.getElementById("puzzle-image").src = puzzle.image;
         } else {
             document.querySelector(".container").innerHTML = "<h2>Puzzle Not Found</h2><a href='index.html' class='back-link'>Back to Puzzle List</a>";
