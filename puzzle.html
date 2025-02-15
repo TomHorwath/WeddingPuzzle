@@ -9,16 +9,22 @@
     <div class="container">
         <h2 id="puzzle-title"></h2>
         <img id="puzzle-image" src="" alt="Puzzle Clue" width="300">
-        <p>Submit your answer by emailing: <strong><insert email></strong></p>
+        <p>Enter your answer below. If correct, you'll be notified!</p>
+        
+        <input type="text" id="answer-input" placeholder="Your answer">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="result-message"></p>
+        
+        <p>Submit your answers by emailing: <strong><insert email></strong></p>
         <br>
         <a href="index.html">Back to Puzzle List</a>
     </div>
 
     <script>
         const puzzles = {
-            1: { title: "Puzzle 1", image: "puzzle1.jpg" },
-            2: { title: "Puzzle 2", image: "puzzle2.jpg" },
-            3: { title: "Puzzle 3", image: "puzzle3.jpg" },
+            1: { title: "Puzzle 1", image: "puzzle1.jpg", answer: "apple" },
+            2: { title: "Puzzle 2", image: "puzzle2.jpg", answer: "banana" },
+            3: { title: "Puzzle 3", image: "puzzle3.jpg", answer: "cherry" },
             // Add more puzzles here
         };
 
@@ -30,6 +36,17 @@
             document.getElementById("puzzle-image").src = puzzles[puzzleId].image;
         } else {
             document.querySelector(".container").innerHTML = "<h2>Puzzle Not Found</h2><a href='index.html'>Back to Puzzle List</a>";
+        }
+
+        function checkAnswer() {
+            const input = document.getElementById("answer-input").value.trim().toLowerCase();
+            const correctAnswer = puzzles[puzzleId]?.answer;
+
+            if (input === correctAnswer) {
+                document.getElementById("result-message").innerText = "✅ Correct!";
+            } else {
+                document.getElementById("result-message").innerText = "❌ Incorrect. Try again!";
+            }
         }
     </script>
 </body>
