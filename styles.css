@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5e6cc;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+h1, h2 {
+    color: #444;
+}
+
+.puzzle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+.puzzle-table th, .puzzle-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.puzzle-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.puzzle-box strong {
+    font-size: 1.2em;
+}
+
+.thumbnail {
+    width: 100px;
+    height: auto;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.puzzle-image {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.input-box {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    margin: 10px;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #007BFF;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
