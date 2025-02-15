@@ -3,19 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Puzzle Hunt</title>
+    <title>Puzzle Hunt</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Wedding Puzzle Hunt</h1>
-    <p>Click a puzzle to view its clue. Each solution is a **single common word** made up of lowercase a-z letters, without spaces or punctuation.</p>
-    <p>Whoever solves the most puzzles by the wedding wins a prize!</p>
-    <p><strong>Submit your answers by emailing them to: <insert email></strong></p>
+    <div class="container">
+        <h1>Wedding Puzzle Hunt</h1>
+        <p>Click a puzzle to attempt to solve it. Whoever solves the most puzzles by the wedding wins a prize!</p>
 
-    <ul>
-        <li><a href="puzzle.html?id=1">Puzzle 1</a></li>
-        <li><a href="puzzle.html?id=2">Puzzle 2</a></li>
-        <li><a href="puzzle.html?id=3">Puzzle 3</a></li>
-        <!-- Add more puzzles here -->
-    </ul>
+        <table class="puzzle-table">
+            <tr>
+                <th>#</th>
+                <th>Puzzle</th>
+                <th>Thumbnail</th>
+            </tr>
+        </table>
+    </div>
+
+    <script src="puzzles.js"></script>
+    <script>
+        const table = document.querySelector(".puzzle-table");
+
+        for (let i = 0; i < puzzles.length; i += 4) {
+            let row = document.createElement("tr");
+            for (let j = 0; j < 4; j++) {
+                if (i + j < puzzles.length) {
+                    let puzzle = puzzles[i + j];
+                    let cell = document.createElement("td");
+                    cell.innerHTML = `
+                        <a href="puzzle.html?id=${puzzle.id}" class="puzzle-link">
+                            <div class="puzzle-box">
+                                <strong>${puzzle.id}</strong> - ${puzzle.title}<br>
+                                <img src="${puzzle.image}" alt="${puzzle.title}" class="thumbnail">
+                            </div>
+                        </a>
+                    `;
+                    row.appendChild(cell);
+                }
+            }
+            table.appendChild(row);
+        }
+    </script>
 </body>
 </html>
