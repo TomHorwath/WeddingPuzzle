@@ -19,29 +19,23 @@
         <a href="index.html" class="back-link">Back to Puzzle List</a>
     </div>
 
+    <script src="puzzles.js"></script>
     <script>
-        const puzzles = {
-            1: { title: "Mystery Word", image: "puzzle1.jpg", answer: "apple" },
-            2: { title: "Hidden Code", image: "puzzle2.jpg", answer: "banana" },
-            3: { title: "Cipher Challenge", image: "puzzle3.jpg", answer: "cherry" },
-            4: { title: "Logic Grid", image: "puzzle4.jpg", answer: "date" }
-        };
-
         const urlParams = new URLSearchParams(window.location.search);
         const puzzleId = parseInt(urlParams.get("id"));
 
-        if (puzzles[puzzleId]) {
-            document.getElementById("puzzle-title").innerText = puzzles[puzzleId].title;
-            document.getElementById("puzzle-image").src = puzzles[puzzleId].image;
+        const puzzle = puzzles.find(p => p.id === puzzleId);
+
+        if (puzzle) {
+            document.getElementById("puzzle-title").innerText = puzzle.title;
+            document.getElementById("puzzle-image").src = puzzle.image;
         } else {
             document.querySelector(".container").innerHTML = "<h2>Puzzle Not Found</h2><a href='index.html' class='back-link'>Back to Puzzle List</a>";
         }
 
         function checkAnswer() {
             const input = document.getElementById("answer-input").value.trim().toLowerCase();
-            const correctAnswer = puzzles[puzzleId]?.answer;
-
-            if (input === correctAnswer) {
+            if (input === puzzle.answer) {
                 document.getElementById("result-message").innerText = "✅ Correct!";
             } else {
                 document.getElementById("result-message").innerText = "❌ Incorrect. Try again!";
