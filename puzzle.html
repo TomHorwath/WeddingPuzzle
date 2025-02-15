@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+</head>
+<body>
+    <div class="container">
+        <h2 id="puzzle-title"></h2>
+        <img id="puzzle-image" src="" alt="Puzzle Clue" width="300">
+        <p>Submit your answer by emailing: <strong><insert email></strong></p>
+        <br>
+        <a href="index.html">Back to Puzzle List</a>
+    </div>
+
+    <script>
+        const puzzles = {
+            1: { title: "Puzzle 1", image: "puzzle1.jpg" },
+            2: { title: "Puzzle 2", image: "puzzle2.jpg" },
+            3: { title: "Puzzle 3", image: "puzzle3.jpg" },
+            // Add more puzzles here
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const puzzleId = parseInt(urlParams.get("id"));
+
+        if (puzzles[puzzleId]) {
+            document.getElementById("puzzle-title").innerText = puzzles[puzzleId].title;
+            document.getElementById("puzzle-image").src = puzzles[puzzleId].image;
+        } else {
+            document.querySelector(".container").innerHTML = "<h2>Puzzle Not Found</h2><a href='index.html'>Back to Puzzle List</a>";
+        }
+    </script>
+</body>
+</html>
